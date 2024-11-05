@@ -4,16 +4,18 @@ using UnityEngine.EventSystems;
 public class Cat : MonoBehaviour, IPointerDownHandler 
 {
     [SerializeField] private int _counts;
-    private ClickDestroy _clickClass;
+    private ClickDestroy _clickDestroy;
+    private PointsManager _pointersManager;
 
     private void Awake()
     {
-       _clickClass = FindObjectOfType<ClickDestroy>(); 
+        _clickDestroy = FindObjectOfType<ClickDestroy>();
+        _pointersManager = FindObjectOfType<PointsManager>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _clickClass.ClickOnCat(_counts);
-        Destroy(gameObject);
+        _clickDestroy.ClickOnCat(gameObject);
+        _pointersManager.PointsAdd(_counts);
     }
 }

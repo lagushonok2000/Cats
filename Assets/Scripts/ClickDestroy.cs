@@ -1,17 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ClickDestroy : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _countsText;
-
-    private void Start()
+    public void ClickOnCat(GameObject catObject)
     {
-        _countsText.text = Counts.AllCounts.ToString();
-    }
-    public void ClickOnCat(int add)
-    {
-        Counts.AllCounts += add;
-        _countsText.text = Counts.AllCounts.ToString();
+        Destroy(catObject);
     }
 }

@@ -1,4 +1,4 @@
 public static class SaveKeys
 {
-    public static readonly string AllCounts = "allCounts";
+    public static readonly string AllPoints = "allCounts";
 }

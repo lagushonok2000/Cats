@@ -7,9 +7,7 @@ public class UpdateStartAllCounts : MonoBehaviour
 
     private void Start()
     {
-        Counts.AllCounts = PlayerPrefs.GetInt(SaveKeys.AllCounts);
-        _allCountsText.text = Counts.AllCounts.ToString();
+        Points.AllPoints = PlayerPrefs.GetInt(SaveKeys.AllPoints);
+        _allCountsText.text = Points.AllPoints.ToString();
     }
-
-    
 }
