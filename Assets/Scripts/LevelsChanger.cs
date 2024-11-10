@@ -1,32 +1,28 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
-using Image = UnityEngine.UI.Image;
 
 public class LevelsChanger : MonoBehaviour
 {
     [SerializeField] private Button _startButton;
     [SerializeField] private Button _nextLevelButton;
-    [SerializeField] private Panel _defeatPanel;
-    [SerializeField] private Image _victoryPanel;
+    [SerializeField] private Button _restartLevelButton;
+    [SerializeField] private GameObject _defeatPanel;
+    [SerializeField] private GameObject _victoryPanel;
     [SerializeField] private LevelsSO _levelsSO;
     [SerializeField] private LevelTimer _levelTimer;
     [SerializeField] private CreateCats _createCats;
     [SerializeField] private PointsManager _pointsManager;
 
-    public int _currentLevel = 0;
-
     private void Start()
     {
-        _startButton.onClick.AddListener(() => SetLevel(_currentLevel));
+        _startButton.onClick.AddListener(() => SetLevel(Level.Current));
         _nextLevelButton.onClick.AddListener(NextLevel);
-        _currentLevel = (Level.Current);
+        _restartLevelButton.onClick.AddListener(RestartLevel);
     }
 
     public void SetLevel(int level)
     {
-        _currentLevel = level;
+        Level.Current = level;
         _pointsManager.ResetLevelPoints();
         _startButton.gameObject.SetActive(false);
         _levelTimer.StartTimer(_levelsSO.TimeOnLevel[level]);
@@ -35,13 +31,14 @@ public class LevelsChanger : MonoBehaviour
 
     public void RestartLevel()
     {
-        _defeatPanel.enabled = false;
+        _defeatPanel.SetActive(false);
+        _startButton.gameObject.SetActive(true);
     }
 
     public void NextLevel()
     {
-        _currentLevel++;
-        _victoryPanel.enabled = false;
+        Level.Current++;
+        _victoryPanel.SetActive(false);
         _startButton.gameObject.SetActive(true);
     }
 }

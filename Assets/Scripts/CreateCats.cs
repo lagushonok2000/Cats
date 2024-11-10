@@ -5,8 +5,7 @@ public class CreateCats : MonoBehaviour
 {
     [SerializeField] public GameObject[] _prefabs;
     [SerializeField] private Transform _parent;
-    [SerializeField] private Vector2 _timeCreate;
-    [SerializeField] private Vector2 _timeDestroy;
+    [SerializeField] private LevelsSO _levelSO;
 
     public Hole[] Holes;
 
@@ -18,8 +17,10 @@ public class CreateCats : MonoBehaviour
         IsCreate = true;
         while (IsCreate)
         {
+            var a = Random.Range(_levelSO._timeCreate[Level.Current].x, _levelSO._timeCreate[Level.Current].y);
+            Debug.Log(Level.Current);
             PlacesCheck();
-            yield return new WaitForSeconds(Random.Range(_timeCreate.x, _timeCreate.y));
+            yield return new WaitForSeconds(a);
         }
     }    
 
@@ -33,9 +34,25 @@ public class CreateCats : MonoBehaviour
     }
     public IEnumerator DestroyObjects(GameObject o, Hole hole)
     {
-        yield return new WaitForSeconds(Random.Range(_timeDestroy.x, _timeDestroy.y));
+        yield return new WaitForSeconds(Random.Range(_levelSO._timeDestroy[Level.Current].x, _levelSO._timeDestroy[Level.Current].y));
         Destroy(o);
         hole.IsFree = true;
+    }
+
+    public void DestroyAllCats()
+    {
+        int countCats = _parent.childCount;
+       
+        StopAllCoroutines();
+
+        for(int i = 0; i < Holes.Length; i++)
+        {
+            Holes[i].IsFree = true;
+        }
+        for(int i = _parent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(_parent.GetChild(i).gameObject);
+        }
     }
 
     private void PlacesCheck()

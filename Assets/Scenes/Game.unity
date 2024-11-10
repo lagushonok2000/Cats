@@ -580,8 +580,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startButton: {fileID: 1021446929}
   _nextLevelButton: {fileID: 331453409}
-  _defeatPanel: {fileID: 294862718}
-  _victoryPanel: {fileID: 898243952}
+  _restartLevelButton: {fileID: 1170841531}
+  _defeatPanel: {fileID: 294862716}
+  _victoryPanel: {fileID: 898243950}
   _levelsSO: {fileID: 11400000, guid: d4a2753228cede04fa130f7f5827e586, type: 2}
   _levelTimer: {fileID: 84526269}
   _createCats: {fileID: 84526270}
@@ -614,9 +615,8 @@ MonoBehaviour:
   _levelTimer: {fileID: 84526269}
   _createClass: {fileID: 84526270}
   _nextLevelButton: {fileID: 331453409}
-  _restartLevelButton: {fileID: 1170841531}
-  _defeatPanel: {fileID: 294862718}
-  _victoryPanel: {fileID: 898243952}
+  _defeatPanel: {fileID: 294862716}
+  _victoryPanel: {fileID: 898243950}
   _pointsManager: {fileID: 84526271}
   _levelSO: {fileID: 11400000, guid: d4a2753228cede04fa130f7f5827e586, type: 2}
 --- !u!114 &84526269
@@ -652,8 +652,7 @@ MonoBehaviour:
   - {fileID: 7287470689422300540, guid: 0cb68aebe6bfc3143adcf11d389ecdf2, type: 3}
   - {fileID: 5840912431582846008, guid: 31312d204c03d50448a21df9e1b0bccd, type: 3}
   _parent: {fileID: 619029505}
-  _timeCreate: {x: 0.2, y: 1}
-  _timeDestroy: {x: 4, y: 5}
+  _levelSO: {fileID: 11400000, guid: d4a2753228cede04fa130f7f5827e586, type: 2}
   Holes:
   - {fileID: 1226151104}
   - {fileID: 1449230001}
