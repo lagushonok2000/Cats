@@ -21,6 +21,14 @@ public class EndGame : MonoBehaviour
         _createClass.IsCreate = false;
         _victoryPanel.SetActive(true);
         _pointsManager.VictoryEndPoints();
+
+        int currentMaxLevel = PlayerPrefs.GetInt(SaveKeys.MaximumActiveLevel);
+        int currentLevel = Level.Current + 1;
+        if (currentLevel >= currentMaxLevel)
+        {
+            PlayerPrefs.SetInt(SaveKeys.MaximumActiveLevel, currentLevel + 1);
+            PlayerPrefs.Save();
+        }
     }
 
     private void Lose()
@@ -31,7 +39,7 @@ public class EndGame : MonoBehaviour
         _pointsManager.ResetLevelPoints();
     }
 
-    private bool CheckWin()
+    public bool CheckWin()
     {
         return Points.LevelPoints >= _levelSO.VictoryPoints[Level.Current];
     }

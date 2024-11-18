@@ -2720,6 +2720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3f45cacad585f4ea9abbfd1d23d73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentLevel: 0
   _buttons:
   - {fileID: 1862370667}
   - {fileID: 35078241}
