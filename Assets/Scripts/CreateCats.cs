@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CreateCats : MonoBehaviour
 {
-    [SerializeField] public GameObject[] _prefabs;
+    [SerializeField] public Cat[] _cats;
     [SerializeField] private Transform _parent;
     [SerializeField] private LevelsSO _levelSO;
 
@@ -17,24 +17,60 @@ public class CreateCats : MonoBehaviour
         IsCreate = true;
         while (IsCreate)
         {
-            var a = Random.Range(_levelSO._timeCreate[Level.Current].x, _levelSO._timeCreate[Level.Current].y);
             Debug.Log(Level.Current);
             PlacesCheck();
-            yield return new WaitForSeconds(a);
+            yield return new WaitForSeconds(_levelSO.TimeCreate[Level.Current]);
         }
     }    
 
     private void CreateObjects(Hole hole)
     {
-        int indexPrefab = (Random.Range(0, _prefabs.Length));
-        GameObject obj = Instantiate(_prefabs[indexPrefab], _parent);
+        int indexPrefab = ChooseCat();
+        GameObject obj = Instantiate(_cats[indexPrefab].gameObject, _parent);
         obj.transform.position = hole.transform.position;
         hole.IsFree = false;
         StartCoroutine(DestroyObjects(obj, hole));
     }
+
+    private int ChooseCat()
+    {
+        float cummulativeProbability = 0f;
+        float random = Random.Range(0, 100f);
+
+        if (ProbabilityCheck() == false)
+        {
+            Debug.LogError("Олег конченный");
+            return 0;
+        }
+
+        for (int i = 0; i < _cats.Length; i++)
+        {
+            cummulativeProbability += _cats[i].Probability;
+
+            if (random < cummulativeProbability)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private bool ProbabilityCheck()
+    {
+        float summProbability = 0f;
+
+        for (int i = 0; i < _cats.Length; i++)
+        {
+            summProbability += _cats[i].Probability;
+        }
+
+        if (summProbability != 100f) return false;
+        return true;
+    }
+
     public IEnumerator DestroyObjects(GameObject o, Hole hole)
     {
-        yield return new WaitForSeconds(Random.Range(_levelSO._timeDestroy[Level.Current].x, _levelSO._timeDestroy[Level.Current].y));
+        yield return new WaitForSeconds(_levelSO.TimeDestroy[Level.Current]);
         Destroy(o);
         hole.IsFree = true;
     }

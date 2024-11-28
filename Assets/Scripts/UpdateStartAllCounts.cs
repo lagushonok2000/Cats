@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class UpdateStartAllCounts : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _allCountsText;
+    [SerializeField] public TMP_Text ÀllCountsText;
 
     private void Start()
     {
         Points.AllPoints = PlayerPrefs.GetInt(SaveKeys.AllPoints);
-        _allCountsText.text = Points.AllPoints.ToString();
+        ÀllCountsText.text = Points.AllPoints.ToString();
     }
 }

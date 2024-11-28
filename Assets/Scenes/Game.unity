@@ -587,7 +587,6 @@ MonoBehaviour:
   _levelTimer: {fileID: 84526269}
   _createCats: {fileID: 84526270}
   _pointsManager: {fileID: 84526271}
-  _currentLevel: 0
 --- !u!114 &84526266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,7 +613,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelTimer: {fileID: 84526269}
   _createClass: {fileID: 84526270}
-  _nextLevelButton: {fileID: 331453409}
   _defeatPanel: {fileID: 294862716}
   _victoryPanel: {fileID: 898243950}
   _pointsManager: {fileID: 84526271}
@@ -647,10 +645,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493711f881da7bf43afc36797b770365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabs:
-  - {fileID: 687525609637352157, guid: 115630dd8ccf63c4383d043137ea4ea4, type: 3}
-  - {fileID: 7287470689422300540, guid: 0cb68aebe6bfc3143adcf11d389ecdf2, type: 3}
-  - {fileID: 5840912431582846008, guid: 31312d204c03d50448a21df9e1b0bccd, type: 3}
+  _cats:
+  - {fileID: 3937004536601711832, guid: d7d4f7c61b7f223468c3114b8fc924dc, type: 3}
+  - {fileID: 4372190237078297284, guid: 474b5e0f074f56141b15bb4a0c0e2849, type: 3}
+  - {fileID: 6753892726844646626, guid: f36a0cede8766a045ade1f66c4c642cc, type: 3}
   _parent: {fileID: 619029505}
   _levelSO: {fileID: 11400000, guid: d4a2753228cede04fa130f7f5827e586, type: 2}
   Holes:

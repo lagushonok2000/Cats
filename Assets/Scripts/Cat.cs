@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class Cat : MonoBehaviour, IPointerDownHandler 
 {
     [SerializeField] private int _counts;
+    public float Probability;
     private ClickDestroy _clickDestroy;
     private PointsManager _pointersManager;
 
