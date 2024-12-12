@@ -23,8 +23,6 @@ public class SpendPoints : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         for (int i = startPoints; i > 0; i--)
         {
-            
-            
             _allPoints--;
             MinusPointsCount++;
 

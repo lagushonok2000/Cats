@@ -7,8 +7,10 @@ public class FreeCatsCounter : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 {
     [SerializeField] private TMP_Text _counterText;
     [SerializeField] private SpendPoints _spendPoints;
-    [SerializeField] private int _counterNumber;
+    [SerializeField] private int _counterDefaultValue;
     [SerializeField] private FreeCatsAnimation _freeCatsAnimation;
+    [SerializeField] private ParticleManager _particleManager;
+    [SerializeField] private Animator _kletkaAnimator;
     private Coroutine _coroutine;
     [HideInInspector] public int Counter;
 
@@ -20,7 +22,7 @@ public class FreeCatsCounter : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         }
         else
         {
-            Counter = _counterNumber;
+            Counter = _counterDefaultValue;
             PlayerPrefs.SetInt(SaveKeys.FreeCatsCounter, Counter);
             PlayerPrefs.Save();
         }
@@ -36,6 +38,12 @@ public class FreeCatsCounter : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             if (_spendPoints._allPoints == 0)
             {
                 break;
+            }
+
+            if (Counter == 0)
+            {
+                _kletkaAnimator.SetTrigger("EndKletka");
+                _particleManager.Particle();
             }
 
             Counter--;

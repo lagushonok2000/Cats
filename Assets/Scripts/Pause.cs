@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class Pause : MonoBehaviour
 {
     [SerializeField] private Button _pauseButton;
@@ -14,6 +15,14 @@ public class Pause : MonoBehaviour
         _pauseButton.onClick.AddListener(PauseButton);
         _stopPauseButton.onClick.AddListener(StopPauseButton);
         _mainMenuButton.onClick.AddListener(ExitToMainMenu);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseButton();
+        }
     }
 
     public void ExitToMainMenu()

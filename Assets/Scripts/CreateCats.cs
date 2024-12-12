@@ -17,7 +17,6 @@ public class CreateCats : MonoBehaviour
         IsCreate = true;
         while (IsCreate)
         {
-            Debug.Log(Level.Current);
             PlacesCheck();
             yield return new WaitForSeconds(_levelSO.TimeCreate[Level.Current]);
         }
@@ -64,8 +63,12 @@ public class CreateCats : MonoBehaviour
             summProbability += _cats[i].Probability;
         }
 
-        if (summProbability != 100f) return false;
-        return true;
+
+        if (Mathf.Abs(summProbability  - 100 ) < 1f)
+        {
+            return true;
+        }
+        return false;
     }
 
     public IEnumerator DestroyObjects(GameObject o, Hole hole)
