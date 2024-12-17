@@ -4,7 +4,8 @@ using UnityEngine;
 public class SavesManager : MonoBehaviour
 {
     [SerializeField] private int _currentMaxLevel;
-    [SerializeField] private int _expectedPoints;
+    [SerializeField] private int _allPoints;
+    [SerializeField] private int _freePoints;
 
     [Button ("открыть все уровни")]
     private void OpenAllLevels()
@@ -34,10 +35,17 @@ public class SavesManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    [Button("Установить кол-во очков")]
-    private void SetPoints()
+    [Button("Установить кол-во очков All")]
+    private void SetAllPoints()
     {
-        PlayerPrefs.SetInt(SaveKeys.AllPoints,_expectedPoints);
+        PlayerPrefs.SetInt(SaveKeys.AllPoints,_allPoints);
+        PlayerPrefs.Save();
+    }
+
+    [Button("Установить кол-во очков Free")]
+    private void SetFreePoints()
+    {
+        PlayerPrefs.SetInt(SaveKeys.FreeCatsCounter, _freePoints);
         PlayerPrefs.Save();
     }
 }

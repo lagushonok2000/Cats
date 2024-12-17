@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pointsText: {fileID: 9043892976074200966}
   _counts: 1
-  Probability: 2.45
+  Probability: 2.9
 --- !u!114 &4391821776312232177
 MonoBehaviour:
   m_ObjectHideFlags: 0

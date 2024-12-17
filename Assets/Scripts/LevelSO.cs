@@ -8,4 +8,5 @@ using UnityEngine;
         public float[] TimeCreate;
         public float[] TimeDestroy;
         public float SpendTime;
+        public int DefaultCatscounter;
     }
